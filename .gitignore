@@ -78,3 +78,6 @@ dist
 #   Below V
 app/css/*.css
 app/css/maps/*
+
+# Config file
+.config
