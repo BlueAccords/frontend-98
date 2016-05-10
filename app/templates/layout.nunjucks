@@ -19,20 +19,9 @@
     <![endif]-->
   </head>
   <body>
-    
-<nav>
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Contact Us</a></li>
-  </ul>
-</nav>
+    {% include "partials/nav.nunjucks" %}
     <!-- Main Content Here -->
-    
-
-<h1>This is the index page</h1>
-
-
+    {% block content %} {% endblock %}
 
 
     <!-- Javascript files -->

@@ -1,0 +1,13 @@
+<!-- index.html file -->
+
+<!-- Extend base layout html -->
+<!-- These paths are relative to the "templates" folder
+due to the way its written in the gulp task -->
+{% extends "layout.nunjucks" %}
+
+<!-- Content block -->
+{% block content %}
+
+<h1>This is the index page</h1>
+
+{% endblock %}

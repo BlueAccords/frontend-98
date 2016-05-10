@@ -65,6 +65,12 @@ var sourcemaps  = require('gulp-sourcemaps');
 // Auto prefixer for css prefixes
 var autoprefixer = require('gulp-autoprefixer');
 
+// Used to render nunjucks templating language files as html
+var nunjucksRender = require('gulp-nunjucks-render');
+
+// Used pipe json data into nunjucks template pages
+var dataPipe = require('gulp-data');
+
 // ======================== Gulp Tasks Examples ===============================
 
 // Example Gulp Task ==========================================================
@@ -125,17 +131,28 @@ var htmlPath = './app/*.html';
 var jsPath   = './app/js/**/*.js';
 var imgPath  = './app/images/**/*.+(jpg|jpeg|png|svg|gif)';
 var fontsPath = './app/fonts/**/*';
+var nunjucksPath = './app/pages/**/*.+(html|nunjucks)';
 
 // Production Paths
 var outputImgPath = './dist/images'
 var outputFontsPath = './dist/fonts'
 
+
+// Nunjucks Render options
+var nunjucksOptions = {
+  // Path to set where to look for templates
+  path: ['app/templates']
+}
+
+// Data to pipe into nunjucks pages
+var dataPipePath = './app/data.json';
+
 // Imagemin optimization options
 var imageminOptions = {
-      optimizationLevel : 3,     // default of 3, range 1-7
-      progressive       : true, // jpg, progressive conversoin vs lossless(false) by default
-      interlaced        : true, // gif, Interlace gif for progressive rendering
-      multipass         : false, // svg, Optimize svg multiple times until it's fully optimized.
+  optimizationLevel : 3,     // default of 3, range 1-7
+  progressive       : true, // jpg, progressive conversoin vs lossless(false) by default
+  interlaced        : true, // gif, Interlace gif for progressive rendering
+  multipass         : false, // svg, Optimize svg multiple times until it's fully optimized.
 };
 
 // Autoprefixer options
@@ -153,6 +170,23 @@ var autoprefixerOptions = {
 
 // ============================== End Options ================================
 
+// Renders nunjucks files
+// Sets "main" directory for nunjucks pages so paths to get partials/macros
+// is set to app/templates
+gulp.task('nunjucks', function() {
+  return gulp.src(nunjucksPath)
+
+  // Pipe json data to nunjucks templates
+  .pipe(dataPipe(function() {
+    return require(dataPipePath)
+  }))
+
+  // render templates with nunjucks
+  .pipe(nunjucksRender(nunjucksOptions))
+
+  // outputs files to app folder
+  .pipe(gulp.dest('app/'))
+});
 
 // Compiles scss into css for development folder
 // adds source maps
