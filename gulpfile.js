@@ -132,6 +132,7 @@ var jsPath   = './app/js/**/*.js';
 var imgPath  = './app/images/**/*.+(jpg|jpeg|png|svg|gif)';
 var fontsPath = './app/fonts/**/*';
 var nunjucksPath = './app/pages/**/*.+(html|nunjucks)';
+var nunjucksTemplatePath = './app/templates/**/*.+(html|nunjucks)';
 
 // Production Paths
 var outputImgPath = './dist/images'
@@ -141,7 +142,7 @@ var outputFontsPath = './dist/fonts'
 // Nunjucks Render options
 var nunjucksOptions = {
   // Path to set where to look for templates
-  path: ['app/templates']
+  path: ['app/templates'],
 }
 
 // Data to pipe into nunjucks pages
@@ -186,6 +187,11 @@ gulp.task('nunjucks', function() {
 
   // outputs files to app folder
   .pipe(gulp.dest('app/'))
+
+  // Reloads browsersync
+  .pipe(browserSync.reload({ // browserSync reloads the browser/devices
+      stream: true
+    }))
 });
 
 // Compiles scss into css for development folder
@@ -229,9 +235,10 @@ gulp.task('watch', ['browserSync', 'sass'], function() {
   gulp.watch(sassPath, ['sass']);
 
   // Watch html/js files for changes and reloads the browser
+  gulp.watch(nunjucksPath, ['nunjucks']);
+  gulp.watch(nunjucksTemplatePath, ['nunjucks']);
   gulp.watch(htmlPath, browserSync.reload);
   gulp.watch(jsPath, browserSync.reload)
-  // Other tasks here
   
   // log a message in the console on change
   .on('change', function(event) {
@@ -330,12 +337,12 @@ gulp.task('clean:cache', function (cb) {
 });
 
 
-// Build system, cleans production folder, minify/concat files, compile sass
+// Build system, cleans production folder, compiles nunjucks files,minify/concat files, compile sass
 // optimize images, move fonts from dev to production folder
 gulp.task('build', function(callback) {
   // runSync used to clean dist folder FIRST THEN moves all files there
   runSync('clean:dist',
-    ['sassProd', 'minify', 'images', 'fonts'],
+    ['nunjucks', 'sassProd', 'minify', 'images', 'fonts'],
     callback)
 });
 
@@ -343,7 +350,7 @@ gulp.task('build', function(callback) {
 gulp.task('build:server', function(callback) {
   // runSync used to clean dist folder FIRST THEN moves all files there
   runSync('clean:dist', 
-    ['sassProd', 'minify', 'images', 'fonts'], 
+    ['nunjucks', 'sassProd', 'minify', 'images', 'fonts'], 
     'browserSyncDist', 
     callback)
 });
@@ -351,6 +358,6 @@ gulp.task('build:server', function(callback) {
 // Default function that runs browsersync and watches for changes
 // Ran by default if calling "gulp" without any arguments
 gulp.task('default', function(callback) {
-  runSync(['sass', 'browserSync', 'watch'],
+  runSync(['nunjucks', 'sass', 'browserSync', 'watch'],
     callback)
 });
