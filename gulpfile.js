@@ -71,6 +71,13 @@ var nunjucksRender = require('gulp-nunjucks-render');
 // Used pipe json data into nunjucks template pages
 var dataPipe = require('gulp-data');
 
+// Used to sync local changes to deployment server
+var rsync  = require('gulp-rsync');
+
+// config file
+// TODO: migrate current settings to config file
+var config = require('./gulp-config.js')
+
 // ======================== Gulp Tasks Examples ===============================
 
 // Example Gulp Task ==========================================================
@@ -237,7 +244,8 @@ gulp.task('watch', ['browserSync', 'sass'], function() {
   // Watch html/js files for changes and reloads the browser
   gulp.watch(nunjucksPath, ['nunjucks']);
   gulp.watch(nunjucksTemplatePath, ['nunjucks']);
-  gulp.watch(htmlPath, browserSync.reload);
+  // If using nunjucks, editing plain html isn't needed
+  // gulp.watch(htmlPath, browserSync.reload);
   gulp.watch(jsPath, browserSync.reload)
   
   // log a message in the console on change
@@ -341,18 +349,35 @@ gulp.task('clean:cache', function (cb) {
 // optimize images, move fonts from dev to production folder
 gulp.task('build', function(callback) {
   // runSync used to clean dist folder FIRST THEN moves all files there
-  runSync('clean:dist',
-    ['nunjucks', 'sassProd', 'minify', 'images', 'fonts'],
+  // css files need to be compiled first THEN html generated THEN minification
+  runSync('clean:dist', 'sassProd', 'nunjucks',
+    ['minify', 'images', 'fonts'], 
     callback)
 });
 
 // Build everything to production then run a server using the production files
 gulp.task('build:server', function(callback) {
   // runSync used to clean dist folder FIRST THEN moves all files there
-  runSync('clean:dist', 
-    ['nunjucks', 'sassProd', 'minify', 'images', 'fonts'], 
+  runSync('clean:dist', 'sassProd', 'nunjucks',
+    ['minify', 'images', 'fonts'], 
     'browserSyncDist', 
     callback)
+});
+
+gulp.task('build:deploy', function(callback) {
+  runSync('clean:dist',
+    ['nunjucks', 'sassProd', 'minify', 'images', 'fonts'], 
+    'rsync', 
+    callback)
+})
+
+
+// Copy files and folder to server
+// via rsync
+// prompts for password
+gulp.task('rsync', function() {
+  return gulp.src(config.rsync.src)
+    .pipe(rsync(config.rsync.options));
 });
 
 // Default function that runs browsersync and watches for changes

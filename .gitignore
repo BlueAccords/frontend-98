@@ -80,4 +80,4 @@ app/css/*.css
 app/css/maps/*
 
 # Config file
-.config
+gulp-config.js
