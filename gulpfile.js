@@ -113,11 +113,19 @@ var config = require('./gulp-config.js')
 
 // ============================== Config Options ==============================
 
+/*
+===========================================================================================
+===========================================================================================
+* CHANGE THESE TWO DIRECTORIES FOR DIFFERENT PROJECTS IN THE SAME GIT REPO
+===========================================================================================
+===========================================================================================
+
+*/
 // Input directory
-var devDir = 'app';
+var devDir = 'week6';
 
 // Output production directory
-var prodDir = 'dist';
+var prodDir = 'week6-dist';
 
 // sass compiling options
 var sassOptions = {
@@ -132,33 +140,33 @@ var sassProdOptions = { outputStyle: 'compressed' };
 var sMapOutput = './maps'
 
 // Development paths for all the main html/js/sass/scss and image files
-var cssPath  = './app/**/*.css';
+var cssPath  = './' + devDir + '/**/*.css';
 
 // original variable compiles all sass files
 // new variable only compiles main.scss which imports all other files anyways
 // var sassPath = './app/scss/**/*.+(scss|sass)';
-var sassPath = './app/scss/main.+(scss|sass)'
+var sassPath = './' + devDir + '/scss/main.+(scss|sass)'
 
-var htmlPath = './app/*.html';
-var jsPath   = './app/js/**/*.js';
-var imgPath  = './app/images/**/*.+(jpg|jpeg|png|svg|gif)';
-var fontsPath = './app/fonts/**/*';
-var nunjucksPath = './app/pages/**/*.+(html|nunjucks)';
-var nunjucksTemplatePath = './app/templates/**/*.+(html|nunjucks)';
+var htmlPath = './' + devDir + '/*.html';
+var jsPath   = './' + devDir + '/js/**/*.js';
+var imgPath  = './' + devDir + '/images/**/*.+(jpg|jpeg|png|svg|gif)';
+var fontsPath = './' + devDir + '/fonts/**/*';
+var nunjucksPath = './' + devDir + '/pages/**/*.+(html|nunjucks)';
+var nunjucksTemplatePath = './' + devDir + '/templates/**/*.+(html|nunjucks)';
 
 // Production Paths
-var outputImgPath = './dist/images'
-var outputFontsPath = './dist/fonts'
+var outputImgPath = './' + prodDir + '/images'
+var outputFontsPath = './' + prodDir + '/fonts'
 
 
 // Nunjucks Render options
 var nunjucksOptions = {
   // Path to set where to look for templates
-  path: ['app/templates'],
+  path: ['./' + devDir + '/templates'],
 }
 
 // Data to pipe into nunjucks pages
-var dataPipePath = './app/data.json';
+var dataPipePath = './' + devDir + '/data.json';
 
 // Imagemin optimization options
 var imageminOptions = {
@@ -198,7 +206,7 @@ gulp.task('nunjucks', function() {
   .pipe(nunjucksRender(nunjucksOptions))
 
   // outputs files to app folder
-  .pipe(gulp.dest('app/'))
+  .pipe(gulp.dest(devDir + '/'))
 
   // Reloads browsersync
   .pipe(browserSync.reload({ // browserSync reloads the browser/devices
@@ -219,7 +227,7 @@ gulp.task('sass', function() {
     .pipe(sass(sassOptions).on('error', sass.logError)) // convert to css from sass
     .pipe(sourcemaps.write()) // write source maps inline(by default) or to relative path of gulp.dest
     .pipe(autoprefixer(autoprefixerOptions))
-    .pipe(gulp.dest('app/css')) // output to app/css folder
+    .pipe(gulp.dest(devDir + '/css')) // output to app/css folder
     .pipe(browserSync.reload({ // browserSync reloads the browser/devices
       stream: true
     }))
@@ -231,7 +239,7 @@ gulp.task('sassProd', function() {
   return gulp.src(sassPath)
     .pipe(sass(sassProdOptions)) // convert to css from sass
     .pipe(autoprefixer(autoprefixerOptions))
-    .pipe(gulp.dest('app/css')) // output to app/css folder
+    .pipe(gulp.dest(devDir + '/css')) // output to app/css folder
     .pipe(browserSync.reload({ // browserSync reloads the browser/devices
       stream: true
     }))
