@@ -21,11 +21,15 @@
     <![endif]-->
   </head>
   <body>
-    {% include "partials/nav.nunjucks" %}
+    <!-- Header -->
+    {% include "partials/header.nunjucks" %}
+
     <!-- Main Content Here -->
     {% block content %} {% endblock %}
-
-
+    
+    
+    <!-- Footer -->
+    {% include "partials/footer.nunjucks" %}
     <!-- Javascript files -->
 
     <!-- Builds js files and concatenates and minifies them to js/main.min.js directory -->

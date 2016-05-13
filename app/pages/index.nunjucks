@@ -11,6 +11,8 @@ due to the way its written in the gulp task -->
 <h1>This is the index page</h1>
 
 <div class="gallery">
+
+  
   {% for image in images %}
   <figure class="gallery-item"><img src="{{ image.src }}" alt="{{ image.alt }}"></figure>
   {% endfor %}
