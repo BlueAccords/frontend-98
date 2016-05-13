@@ -12,7 +12,7 @@ due to the way its written in the gulp task -->
 
 <div class="gallery">
 
-  <button class="main-btn">Hello</button>
+  <button class="btn">Hello</button>
 
   {% for image in images %}
   <figure class="gallery-item"><img src="{{ image.src }}" alt="{{ image.alt }}"></figure>

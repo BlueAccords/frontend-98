@@ -146,6 +146,7 @@ var cssPath  = './' + devDir + '/**/*.css';
 // new variable only compiles main.scss which imports all other files anyways
 // var sassPath = './app/scss/**/*.+(scss|sass)';
 var sassPath = './' + devDir + '/scss/main.+(scss|sass)'
+var sassWatchPath = './' + devDir + 'scss/**/*.+(scss|sass)';
 
 var htmlPath = './' + devDir + '/*.html';
 var jsPath   = './' + devDir + '/js/**/*.js';
@@ -252,7 +253,7 @@ gulp.task('sassProd', function() {
 gulp.task('watch', ['browserSync', 'sass'], function() {
 
   // Watches the scss directory for changes and runs the sass task
-  gulp.watch(sassPath, ['sass']);
+  gulp.watch(sassWatchPath, ['sass']);
 
   // Watch html/js files for changes and reloads the browser
   gulp.watch(nunjucksPath, ['nunjucks']);

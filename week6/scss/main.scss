@@ -24,7 +24,6 @@ utils/ – contains global mixins, functions, helper selectors, etc.
 vendors/ – contains 3rd-party styles, mixins, etc.
 main.scss – output file that brings together all of the above parts
 
-
 ### Variables
 When adding variables ask these two question
 
@@ -44,4 +43,11 @@ When adding variables ask these two question
 
 body, * {
   box-sizing: border-box;
+}
+
+$red: red;
+$red-light: green;
+
+.btn {
+	@include scotch-button-theme(green);
 }

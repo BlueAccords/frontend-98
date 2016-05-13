@@ -1,0 +1,45 @@
+// Example of defining a SET of clors
+// and retrieving it via function and sass's map-get function
+
+
+// aim for 4-7 colors
+// $scotch-colors: (
+//   'primary': #8e3329, 
+//   'accent': #d98328,
+//   'secondary': #5a1321,
+//   'foreground': #191919,
+//   'background': #e9e9e9
+// );
+
+// // Given
+// @function scotch-color($key: 'primary') {
+// 	@return map-get($scotch-colors, $key);
+// }
+
+// ex. $button-color: scotch-color('primary');
+// returns the primary color from the $scotch-colors key-mapping
+
+// example of tints and shades
+
+// Used to mix white or black with color
+// $color-primary: scotch-color('primary'); // #8e3329
+
+// $color-primary-tinted: mix(white, $color-primary, 10%); // #99473e
+// $color-primary-shaded: mix(black, $color-primary, 10%); // #7f2d24
+
+// darken/lighten functions should NOT be used psat 30%
+// instead, use mix /w white or /w dark
+
+// http://codepen.io/KatieK2/pen/tejhz/
+
+
+// Accessibility and color contrasts
+// http://www.w3.org/TR/WCAG/#visual-audio-contrast
+// - color checker
+// http://leaverou.github.io/contrast-ratio/ 
+/*
+	The Web Content Accessibility Guidelines state 
+	that the contrast ratio between foreground images/text and a 
+	background should be at least 4.5:1 (3:1 for larger text) 
+	for level AA, and 7:1 (4.5:1 for larger text) for level AAA.
+*/
