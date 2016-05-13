@@ -15,6 +15,15 @@ Themes – thematic CSS for non-layout component styling, such as background, co
 Exported Selectors – the manifested CSS classes/selectors, if they are to be expose
 
 
+base/ 		– contains global styles, such as resets, typography, colors, etc.
+components/ – contains each self-contained component in its own .scss partial
+layout/		– contains styling for larger layout components; e.g. nav, header, footer, etc.
+pages/ 		– contains page-specific styling, if necessary
+themes/ 	– contains styling for different themes
+utils/		– contains global mixins, functions, helper selectors, etc.
+vendors/ 	– contains 3rd-party styles, mixins, etc.
+main.scss 	– output file that brings together all of the above parts
+
 ### Variables
 When adding variables ask these two question
 
@@ -34,4 +43,11 @@ When adding variables ask these two question
 
 body, * {
   box-sizing: border-box;
+}
+
+$red: red;
+$red-light: green;
+
+.btn {
+	@include scotch-button-theme(green);
 }
