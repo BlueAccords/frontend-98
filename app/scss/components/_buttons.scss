@@ -1,0 +1,26 @@
+// Buttons
+
+// Button variables
+
+$button-padding: 0.5rem 1rem;
+$font-size: 12px;             // 1 factor below base 16px in modular type scale
+$button-bgcolor: #d9534f;     // the primary brand color
+$button-border-width: 1px;    // border width for all form inputs
+$button-color-hover: #fcfcfc; // the light/white brand color
+
+.main-btn {
+    display: inline-block;
+    padding: $button-padding;
+    font-size: $font-size;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 1px solid #d9534f;
+    transition: all 0.3s ease-in-out;
+    
+    &:hover {
+        background-color: #d9534f;
+        color: #fcfcfc;
+    }
+}

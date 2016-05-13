@@ -1,6 +1,28 @@
 // This file imports all other css files into this one singular main file
 // @import directive in that it includes .scss or .sass files before the final CSS output.
 
+/**
+Variables – for relating component-specific values to others and preventing magic numbers
+
+Mixins – for dynamically generating variations of the component (not necessary if few variations exist)
+
+Structure – the CSS component layout/structure, excluding any non-layout rules, such as color
+
+Relationships – any component-specific CSS with regard to relationships (via combinators) with other components
+
+Themes – thematic CSS for non-layout component styling, such as background, colors, shadows, etc.
+
+Exported Selectors – the manifested CSS classes/selectors, if they are to be expose
+
+
+### Variables
+When adding variables ask these two question
+
+- “What is this?”
+- “How does this relate to my project’s general style?”
+
+*/
+
 // Imports all styling from all other files.
 @import 'base/module';
 @import 'components/module';
