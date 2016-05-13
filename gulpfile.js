@@ -133,7 +133,12 @@ var sMapOutput = './maps'
 
 // Development paths for all the main html/js/sass/scss and image files
 var cssPath  = './app/**/*.css';
-var sassPath = './app/scss/**/*.+(scss|sass)';
+
+// original variable compiles all sass files
+// new variable only compiles main.scss which imports all other files anyways
+// var sassPath = './app/scss/**/*.+(scss|sass)';
+var sassPath = './app/scss/main.+(scss|sass)'
+
 var htmlPath = './app/*.html';
 var jsPath   = './app/js/**/*.js';
 var imgPath  = './app/images/**/*.+(jpg|jpeg|png|svg|gif)';

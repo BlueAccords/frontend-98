@@ -1,5 +1,14 @@
+// This file imports all other css files into this one singular main file
 // @import directive in that it includes .scss or .sass files before the final CSS output.
 
+// Imports all styling from all other files.
+@import 'base/module';
+@import 'components/module';
+@import 'layout/module';
+@import 'pages/module';
+@import 'themes/module';
+@import 'utils/module';
+@import 'vendors/_module';
 
 body, * {
   box-sizing: border-box;
