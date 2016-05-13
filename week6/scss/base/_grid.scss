@@ -1,0 +1,134 @@
+// This is a basic css 12-column grid layout
+
+// Media Query Breakpoints
+$breakpoints: (
+  "small": 0px,
+  "medium": 640px,
+  "large": 1024px,
+  "xlarge": 1200px,
+  "xxlarge": 1440px,
+);
+
+
+// Clear Floats after each row
+.row:before,
+.row:after {
+    content: " ";
+    display: table;
+}
+
+.row:after {
+    clear: both;
+}
+
+// Defining columns
+// All columns are going to be floated left then cleared
+// after their row
+.column {
+  position: relative;
+  float: left;
+}
+
+// Gutter definitions
+// Gutters, by default, will have a margin-left gutter
+// first element of each row will NOT have a gutter
+.column + .column {
+  margin-left: 1.6%;
+}
+
+/*
+  Calculating Column Widths
+
+  Calculation for a SINGLE column width
+  scw = (100 – (m * (mc – 1))) / mc
+    (100 - (1.6 * 11)) / 12
+    (100 - 17.6) / 12
+    82.4 / 12         // 82.4 is the total width of 11/12 columns MINUS margins
+    6.86666666667
+
+  Where:
+
+  scw = single column width
+  m = margin (1.6%)
+  mc = maximum columns (12)
+
+  Calculation for the REST of the column widths
+
+  cw = (scw * cs) + (m * (cs – 1))
+  
+  Where:
+
+  cw = column width
+  scw = single column width (6.86666666667%)
+  cs = column span (1-12)
+  m = margin (1.6%)
+  
+  2/12  == (6.86666666667 * 2) + (1.6 * (2 - 1)); width = 15.3333333333
+  3/12  == (6.86666666667 * 3) + (1.6 * (3 - 1)); width = 23.8
+  4/12  == (6.86666666667 * 4) + (1.6 * (4 - 1)); width = 32.2666666667
+  5/12  == (6.86666666667 * 5) + (1.6 * (5 - 1)); width = 40.7333333333
+  6/12  == (6.86666666667 * 6) + (1.6 * (6 - 1)); width = 49.2
+  7/12  == (6.86666666667 * 7) + (1.6 * (7 - 1)); width = 57.6666666667
+  8/12  == (6.86666666667 * 8) + (1.6 * (8 - 1)); width = 66.1333333333
+  9/12  == (6.86666666667 * 9) + (1.6 * (9 - 1)); width = 74.6
+  10/12 == (6.86666666667 * 10) + (1.6 * (10 - 1)); width = 83.0666666667
+  11/12 == (6.86666666667 * 11) + (1.6 * (11 - 1)); width = 91.5333333333
+  12/12 == (6.86666666667 * 12) + (1.6 * (12 - 1)); width = 100
+
+ */
+
+// Mobile First Grid Layout
+
+.sm-1, 
+.sm-2, 
+.sm-3, 
+.sm-4, 
+.sm-5, 
+.sm-6, 
+.sm-7, 
+.sm-8, 
+.sm-9, 
+.sm-10, 
+.sm-11, 
+.sm-12 {
+  width: auto;
+  float: none;
+}
+
+.md-1, 
+.md-2, 
+.md-3, 
+.md-4, 
+.md-5, 
+.md-6, 
+.md-7, 
+.md-8, 
+.md-9, 
+.md-10, 
+.md-11, 
+.md-12 {
+  width: auto;
+  float: none;
+}
+
+.lg-1, 
+.lg-2, 
+.lg-3, 
+.lg-4, 
+.lg-5, 
+.lg-6, 
+.lg-7, 
+.lg-8, 
+.lg-9, 
+.lg-10, 
+.lg-11, 
+.lg-12 {
+  width: auto;
+  float: none;
+}
+
+// Eliminate margins on columns for mobile
+.column + .column {
+    margin-left: 0;
+}
+
