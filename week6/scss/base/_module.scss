@@ -1,4 +1,7 @@
 // contains global styles, such as resets, typography, colors, etc.
 
 // Also, Imports all files inside the base folder
-@import 'colors'
+@import 'grid';
+@import 'mixins';
+@import 'variables';
+@import 'extends';

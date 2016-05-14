@@ -41,13 +41,17 @@ When adding variables ask these two question
 @import 'utils/module';
 @import 'vendors/_module';
 
-body, * {
-  box-sizing: border-box;
+// Global resets
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
 }
 
-$red: red;
-$red-light: green;
-
-.btn {
-	@include scotch-button-theme(green);
+img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
 }

@@ -1,15 +1,5 @@
 // This is a basic css 12-column grid layout
 
-// Media Query Breakpoints
-$breakpoints: (
-  "small": 0px,
-  "medium": 640px,
-  "large": 1024px,
-  "xlarge": 1200px,
-  "xxlarge": 1440px,
-);
-
-
 // Clear Floats after each row
 .row:before,
 .row:after {

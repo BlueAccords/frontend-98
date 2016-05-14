@@ -1,0 +1,12 @@
+// extends are reusable code snippets that DO NOT accept arguments
+
+%clearfix {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}

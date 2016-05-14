@@ -75,8 +75,7 @@ var dataPipe = require('gulp-data');
 var rsync  = require('gulp-rsync');
 
 // config file
-// TODO: migrate current settings to config file
-var config = require('./gulp-config.js')
+var config = require('./week6/gulp-config.js')
 
 // ======================== Gulp Tasks Examples ===============================
 
@@ -146,7 +145,7 @@ var cssPath  = './' + devDir + '/**/*.css';
 // new variable only compiles main.scss which imports all other files anyways
 // var sassPath = './app/scss/**/*.+(scss|sass)';
 var sassPath = './' + devDir + '/scss/main.+(scss|sass)'
-var sassWatchPath = './' + devDir + 'scss/**/*.+(scss|sass)';
+var sassWatchPath = './' + devDir + '/scss/**/*.+(scss|sass)';
 
 var htmlPath = './' + devDir + '/*.html';
 var jsPath   = './' + devDir + '/js/**/*.js';

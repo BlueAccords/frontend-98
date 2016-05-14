@@ -2,40 +2,40 @@
 
 // Button variables
 
-$button-padding: 0.5rem 1rem;
-// 1 factor below base 16px in modular type scale
-$font-size: 12px;             // alt: type-scape(-1); utility function 
-// the primary brand color
-$button-bgcolor: #d9534f; // alt: $color-primary 
-// border width for all form inputs   
-$button-border-width: 1px; // alt: $input-border-width   
- // the light/white brand color
-$button-color-hover: #fcfcfc; // alt: $color-light
+// $button-padding: 0.5rem 1rem;
+// // 1 factor below base 16px in modular type scale
+// $font-size: 12px;             // alt: type-scape(-1); utility function 
+// // the primary brand color
+// $button-bgcolor: #d9534f; // alt: $color-primary 
+// // border width for all form inputs   
+// $button-border-width: 1px; // alt: $input-border-width   
+//  // the light/white brand color
+// $button-color-hover: #fcfcfc; // alt: $color-light
 
-.main-btn {
-    display: inline-block;
-    padding: $button-padding;
-    font-size: $font-size;
-    font-weight: bold;
-    color: #d9534f;
-    text-transform: uppercase;
-    background-color: transparent;
-    border: 1px solid #d9534f;
-    transition: all 0.3s ease-in-out;
+// .main-btn {
+//     display: inline-block;
+//     padding: $button-padding;
+//     font-size: $font-size;
+//     font-weight: bold;
+//     color: #d9534f;
+//     text-transform: uppercase;
+//     background-color: transparent;
+//     border: 1px solid #d9534f;
+//     transition: all 0.3s ease-in-out;
     
-    &:hover {
-        background-color: #d9534f;
-        color: #fcfcfc;
-    }
-}
+//     &:hover {
+//         background-color: #d9534f;
+//         color: #fcfcfc;
+//     }
+// }
 
-@mixin scotch-button-theme($color, $color-text-hover: darken($color, 15%)) {
-    color: $color;
-    background-color: $color;
-    background-color: transparent;
+// @mixin scotch-button-theme($color, $color-text-hover: darken($color, 15%)) {
+//     color: $color;
+//     background-color: $color;
+//     background-color: transparent;
 
-    &:hover {
-        color: $color-text-hover;
-        background-color: $color;
-    }
-}
+//     &:hover {
+//         color: $color-text-hover;
+//         background-color: $color;
+//     }
+// }

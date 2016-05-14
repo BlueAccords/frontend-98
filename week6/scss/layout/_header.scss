@@ -1,0 +1,119 @@
+// Base styling for header
+
+header {
+  background-color: scotch-color('background');
+}
+
+nav {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: .5rem 1rem;
+  
+  // Used so children can center using vertical-align: middle;
+  line-height: 2rem;
+
+  @extend %clearfix;
+}
+
+// Hide desktop nav by default
+.nav-lg {
+  display: none;
+}
+
+
+// Mobile nav
+.header-title {
+  float: left;
+  margin: 0 auto;
+  color: scotch-color('light');
+}
+
+
+// Hamburger Button
+#hamburger-button {
+  display: block;
+  margin-top: .35rem;
+  cursor:pointer;
+
+  /* Float right side of screen */
+  float: right;
+  vertical-align: middle;
+  
+  // Stabalize color to match header bg color
+  // and have no extra borders
+  background-color: scotch-color('background');
+  border: none;
+
+
+  // Hamburger menu
+  .icon-bar {
+    margin: 0 auto 3px;
+    background-color: scotch-color('light');
+    display: block;
+    width: 22px;
+    height: 5px;
+    border-radius: 1px;
+  }
+
+  /* Eliminate button styling on click */
+  &:focus {
+    outline: none;
+    // Used to make bg the same as header color so color doesnt change to default of white
+    background-color: scotch-color('background');
+  }
+  &:hover {   
+    cursor:pointer;
+    outline: none;
+    border:none;
+  }
+
+  &:active {   
+    cursor:pointer;
+    outline: none;
+    border:none;
+    appearance: button;
+  }
+}
+
+@media only screen and (min-width: break-point(xmedium)) {
+  #hamburger-button {
+    display: none;
+  }
+  
+  // desktop nav
+  .nav-lg {
+    display: block;
+
+  }
+
+  .nav-lg-menu {
+    padding: 0;
+    list-style: none;
+
+    float: right;
+  } 
+
+  .nav-lg-menu li {
+    vertical-align: middle;
+    display: inline-block;
+
+    margin-left: 1em;
+
+    &:first-child {
+      margin-left: 0;
+    }
+    
+    a:visited,
+    a:link {
+      font-weight: 700;
+      color: scotch-color('light');
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:active {
+      color: darken(scotch-color('light'), 15%);
+    }
+
+  }
+}
